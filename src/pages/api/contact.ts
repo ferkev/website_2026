@@ -42,13 +42,13 @@ export const POST: APIRoute = async ({ request }) => {
       subject: "We received your request ✅",
       text: `Hi ${name},
 
-Thank you for reaching out!
+        Thank you for reaching out!
 
-Your request has been successfully recorded and I will get back to you shortly.
+        Your request has been successfully recorded and I will get back to you shortly.
 
-Best regards,
-Kevin LE FRANC
-Freelance Web Design & Dev`,
+        Best regards,
+        Kevin LE FRANC
+        Freelance Web Design & Dev`,
     });
 
     return json({ ok: true }, 200);

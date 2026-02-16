@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="w-[75%] card header">
       <div className="brand">
-        <div className="mark" aria-hidden="true"></div>
+        <img className="mark" src={avatar} alt={`${name}'s avatar`} />
         <div>
           <strong>Kevin LE FRANC</strong>
           <span>Freelance · Web Design & Dev</span>

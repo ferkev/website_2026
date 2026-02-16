@@ -1,31 +1,43 @@
-import React from "react";
+import React, { type FC } from "react";
 
 export type CardProps = {
+  id: string;
   theme: string;
-  titleProjet: string;
+  title: string;
   description: string;
   tags?: string[];
   links?: string[];
 };
 
-export const Card = ({
+export const Card: FC<CardProps> = ({
+  id,
   theme = "Portfolio",
-  titleProject = "Creative Portfolio — Editorial",
+  title = "Creative Portfolio — Editorial",
   description = "Story-driven portfolio with strong typography, accessibility, andsubtle motion.",
   tags = [""],
   links = [""],
 }) => {
   return (
     <article className="proj">
-      <div className="media">
+      <div
+        className="media"
+        style={{
+          backgroundImage: `url(src/assets/${id.toLowerCase()}.png)`,
+          backgroundSize: "cover",
+        }}
+      >
         <span className="label">{theme}</span>
       </div>
       <div className="projBody">
-        <h3>{titleProject}</h3>
+        <h3>{title}</h3>
         <p>{description}</p>
         <div className="meta">
           {tags?.map((tag: string) => {
-            return <span key={tag}>{tag}</span>;
+            return (
+              <span key={tag} className="tag">
+                {tag}
+              </span>
+            );
           })}
         </div>
       </div>

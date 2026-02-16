@@ -140,7 +140,7 @@
   }
 
   .mark {
-    @apply w-13 h-13 rounded-[14px];
+    @apply w-18 h-16 rounded-[14px];
     background: var(--bg-gradient);
     box-shadow: var(--shadow-accent);
   }
@@ -294,12 +294,6 @@
 
   .media {
     @apply aspect-video relative;
-    background: linear-gradient(
-      135deg,
-      rgba(94, 234, 212, 0.22),
-      rgba(96, 165, 250, 0.18),
-      rgba(167, 139, 250, 0.16)
-    );
   }
 
   .label {

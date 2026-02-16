@@ -47,7 +47,8 @@ Thank you for reaching out!
 Your request has been successfully recorded and I will get back to you shortly.
 
 Best regards,
-Your Company Name`,
+Kevin LE FRANC
+Freelance Web Design & Dev`,
     });
 
     return json({ ok: true }, 200);

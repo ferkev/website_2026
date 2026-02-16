@@ -1,7 +1,6 @@
 import React from "react";
-
+import avatar from "../../assets/profile.jpeg";
 interface HeaderProps {
-  avatar: string;
   name: string;
   jobTitle: string;
   skills: string[];
@@ -13,7 +12,6 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  avatar,
   name,
   jobTitle,
   skills,
@@ -22,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="w-[75%] card header">
       <div className="brand">
-        <img className="mark" src={avatar} alt={`${name}'s avatar`} />
+        <img className="mark" src={avatar.src} alt={`${name}'s avatar`} />
         <div>
           <strong>Kevin LE FRANC</strong>
           <span>Freelance · Web Design & Dev</span>

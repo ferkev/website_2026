@@ -22,7 +22,7 @@ export const Card: FC<CardProps> = ({
       <div
         className="media"
         style={{
-          backgroundImage: `url(src/assets/${id.toLowerCase()}.png)`,
+          backgroundImage: `url(./img/${id.toLowerCase()}.png)`,
           backgroundSize: "cover",
         }}
       >

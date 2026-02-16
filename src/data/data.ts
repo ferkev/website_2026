@@ -45,7 +45,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     links: [],
-    cover: "/assets/kaufman.png",
+    cover: "./img/kaufman.png",
   },
   {
     id: "invivo",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     tags: ["Vue 3", "TypeScript", "Contentful", "Jest", "GitLab CI"],
     links: [],
     featured: false,
-    cover: "/assets/invivo.png",
+    cover: "/img/invivo.png",
   },
   {
     id: "jurisdor",
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     ],
     links: [],
     featured: false,
-    cover: "/assets/jurisdor.png",
+    cover: "./img/jurisdor.png",
   },
   {
     id: "carrefourai",
@@ -118,6 +118,6 @@ export const projects: Project[] = [
     tags: ["Vue 3", "TypeScript", "Tailwind", "GCP", "Kubernetes", "Vertex AI"],
     links: [],
     featured: true,
-    cover: "/assets/carrefourai.png",
+    cover: "./img/carrefourai.png",
   },
 ];

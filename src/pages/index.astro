@@ -1,9 +1,29 @@
 ---
+import { Aside } from '../components/Aside/Aside';
+import { Contact } from '../components/Contact/Contact';
+import { Hero } from '../components/Hero/Hero';
+import { Section } from '../components/Section/Section';
+import { Skills } from '../components/Skills/Skills';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
+<Layout class="flex flex-col gap-16">
+   <section class="grid grid2 w-[75%]" style="margin-top: 14px">
+    <Hero />
+	  <Aside />
+  </section>
+  <div class="flex items-start w-[75%]">
+    <Section />
+  </div>
+  <div class="w-[75%]">
+    <Skills />
+  </div>
+
+  <div class="w-[75%]">
+    <Contact />
+  </div>
+
 </Layout>

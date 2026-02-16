@@ -1,1 +1,384 @@
 @import "tailwindcss";
+
+/* -----------------------------
+   TOKENS (your palette)
+------------------------------ */
+:root {
+  --bg: #f6f7fb;
+  --card: rgba(255, 255, 255, 0.78);
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.1);
+
+  --accentA: #5eead4;
+  --accentB: #60a5fa;
+  --accentC: #a78bfa;
+
+  --radius: 18px;
+  --shadow: 0 18px 55px rgba(15, 23, 42, 0.1);
+  --max: 1120px;
+
+  /* handy extras */
+  --gradient: linear-gradient(
+    135deg,
+    var(--accentC),
+    var(--accentB),
+    var(--accentA)
+  );
+  --shadow-accent: 0 16px 34px rgba(96, 165, 250, 0.18);
+  --shadow-accent-mint: 0 16px 34px rgba(94, 234, 212, 0.18);
+}
+
+/* -----------------------------
+   TAILWIND v4 THEME MAPPING
+   (lets you do text-muted, border-line, bg-bg, etc.)
+------------------------------ */
+@theme {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+
+  --color-accent-a: var(--accentA);
+  --color-accent-b: var(--accentB);
+  --color-accent-c: var(--accentC);
+
+  --radius-xl: var(--radius);
+  --shadow-soft: var(--shadow);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  /* container token */
+  --container-max: var(--max);
+
+  /* gradient + shadows */
+  --bg-gradient: var(--gradient);
+  --shadow-accent: var(--shadow-accent);
+  --shadow-accent-mint: var(--shadow-accent-mint);
+}
+
+/* -----------------------------
+   BASE STYLES (global)
+------------------------------ */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    line-height: 1.55;
+    background:
+      radial-gradient(
+        900px 520px at 14% 10%,
+        rgba(94, 234, 212, 0.22),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 520px at 85% 12%,
+        rgba(96, 165, 250, 0.22),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 520px at 50% 95%,
+        rgba(167, 139, 250, 0.18),
+        transparent 60%
+      ),
+      var(--color-bg);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:hover {
+    opacity: 0.92;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* -----------------------------
+   COMPONENT CLASSES (Astro-friendly)
+   Keep your old class names but powered by Tailwind.
+------------------------------ */
+@layer components {
+  /* layout */
+  .container {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 22px 18px;
+  }
+
+  .card {
+    @apply border border-line bg-card rounded-(--radius-xl) shadow-(--shadow-soft) backdrop-blur-[10px];
+  }
+
+  /* header */
+  .header {
+    @apply flex flex-col gap-4 py-0.5 px-4 rounded-3xl bg-white/80 backdrop-blur-md xl:flex-row md:items-center xl:justify-between;
+  }
+
+  .brand {
+    @apply flex items-center gap-4;
+  }
+  .brand strong {
+    @apply text-[14px];
+  }
+  .brand span {
+    @apply block text-[12px] text-muted;
+  }
+
+  .mark {
+    @apply w-13 h-13 rounded-[14px];
+    background: var(--bg-gradient);
+    box-shadow: var(--shadow-accent);
+  }
+
+  nav {
+    @apply flex flex-col gap-4 text-lg font-medium justify-center xl:flex-row xl:items-center xl:gap-4;
+  }
+  nav a {
+    @apply text-[13px] font-bold text-muted text-center px-2.5 py-2 rounded-full;
+  }
+  nav a:hover {
+    @apply bg-black/5 text-text;
+  }
+
+  .cta {
+    @apply w-full rounded-full xl:px-6 py-4 text-lg font-semibold bg-linear-to-br  text-black xl:w-auto;
+  }
+
+  /* buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2.5
+           rounded-full border border-line bg-white font-extrabold text-[13px] cursor-pointer;
+  }
+
+  .btn.primary {
+    @apply border-0 text-[#0b1220];
+    background: linear-gradient(
+      135deg,
+      var(--accentA),
+      var(--accentB),
+      var(--accentC)
+    );
+    box-shadow: var(--shadow-accent-mint);
+  }
+
+  /* grids */
+  .grid {
+    @apply grid gap-3.5;
+  }
+  .grid2 {
+    @apply grid-cols-1 lg:grid-cols-[1.25fr_0.75fr];
+  }
+  .grid3 {
+    @apply grid-cols-1 lg:grid-cols-3;
+  }
+
+  /* hero */
+  .hero {
+    @apply p-4.5 relative overflow-hidden;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 px-2.5 py-1.75
+           rounded-full bg-white border border-line text-muted text-[12px] font-extrabold;
+  }
+
+  .dot {
+    @apply w-2.5 h-2.5 rounded-full;
+    background: linear-gradient(135deg, var(--accentB), var(--accentA));
+    box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.16);
+  }
+
+  h1 {
+    @apply mt-3 mb-2 leading-[1.05] tracking-[-0.8px] text-[clamp(26px,3.7vw,42px)];
+  }
+
+  .sub {
+    @apply m-0 text-muted text-[15px] max-w-[66ch];
+  }
+  .heroActions {
+    @apply mt-3.5 flex gap-2 flex-wrap;
+  }
+
+  /* sidebar */
+  .sticky {
+    @apply sticky top-21.5 h-fit;
+  }
+  @media (max-width: 920px) {
+    .sticky {
+      position: relative;
+      top: auto;
+    }
+    header {
+      border-radius: 18px;
+    }
+  }
+
+  .profile {
+    @apply flex gap-3 items-center border border-dashed rounded-2xl p-3.5 bg-white;
+    border-color: rgba(15, 23, 42, 0.18);
+  }
+
+  .avatar {
+    @apply w-13.5 h-13.5 rounded-[18px];
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.75),
+      rgba(167, 139, 250, 0.75)
+    );
+  }
+
+  .profile small {
+    @apply block text-muted;
+  }
+
+  .stats {
+    @apply mt-3 grid grid-cols-2 gap-2.5;
+  }
+
+  .stat {
+    @apply border border-line rounded-2xl p-3;
+    background: rgba(15, 23, 42, 0.02);
+  }
+
+  .stat strong {
+    @apply block text-[13px];
+  }
+  .stat span {
+    @apply block text-muted text-[12px];
+  }
+
+  /* sections */
+  section {
+    @apply mt-3.5;
+  }
+
+  .sectionHead {
+    @apply px-4.5 pt-4.5 flex items-end justify-between gap-3 flex-wrap;
+  }
+
+  .sectionHead h2 {
+    @apply m-0 text-[16px] tracking-[-0.2px];
+  }
+  .sectionHead p {
+    @apply m-0 text-muted text-[13px];
+  }
+
+  /* projects */
+  .projects {
+    @apply px-4.5 pt-3.5 pb-4.5 grid gap-3.5 grid-cols-1 lg:grid-cols-2;
+  }
+
+  .proj {
+    @apply border border-line rounded-[18px] bg-white overflow-hidden
+           shadow-[0_12px_28px_rgba(15,23,42,0.07)]
+           flex flex-col min-h-75 transition-transform;
+  }
+  .proj:hover {
+    transform: translateY(-3px);
+  }
+
+  .media {
+    @apply aspect-video relative;
+    background: linear-gradient(
+      135deg,
+      rgba(94, 234, 212, 0.22),
+      rgba(96, 165, 250, 0.18),
+      rgba(167, 139, 250, 0.16)
+    );
+  }
+
+  .label {
+    @apply absolute left-3 top-3 px-2.5 py-1.75 rounded-full
+           border border-line text-[12px] font-black;
+    background: rgba(255, 255, 255, 0.86);
+  }
+
+  .projBody {
+    @apply p-3.5;
+  }
+  .projBody h3 {
+    @apply m-0 text-[15px];
+  }
+  .projBody p {
+    @apply mt-2 text-muted text-[14px];
+  }
+
+  .meta {
+    @apply mt-2.5 flex gap-2 flex-wrap;
+  }
+
+  .tag {
+    @apply text-[12px] px-2.5 py-1.5 rounded-full border border-line
+           text-muted font-extrabold;
+    background: rgba(15, 23, 42, 0.02);
+  }
+
+  .projFoot {
+    @apply mt-auto px-3.5 py-3 border-t border-line flex gap-2 flex-wrap;
+    background: rgba(15, 23, 42, 0.02);
+  }
+
+  .link {
+    @apply text-[13px] font-black px-2.5 py-2 rounded-full border border-line bg-white;
+  }
+
+  /* skills */
+  .skills {
+    @apply px-4.5 pt-3.5 pb-4.5 flex gap-2 flex-wrap;
+  }
+  .pillTag {
+    @apply px-2.5 py-2 rounded-full border border-line bg-white text-muted text-[13px] font-extrabold;
+  }
+
+  /* contact */
+  .contactGrid {
+    @apply px-4.5 pt-3.5 pb-4.5 grid gap-3.5 grid-cols-1 lg:grid-cols-2;
+  }
+
+  .panel {
+    @apply border border-line rounded-[18px] bg-white p-4;
+  }
+
+  label {
+    @apply block text-[13px] text-muted font-black mt-2.5;
+  }
+
+  input,
+  textarea {
+    @apply w-full mt-1.5 px-3 py-3 rounded-[14px] border border-line outline-none bg-white;
+    font-family: inherit;
+  }
+
+  /* toast */
+  .toast {
+    @apply fixed left-1/2 bottom-4.5 -translate-x-1/2
+           bg-slate-900 text-white px-3 py-2.5 rounded-full
+           font-extrabold text-[13px]
+           shadow-[0_14px_40px_rgba(0,0,0,0.22)]
+           opacity-0 pointer-events-none transition;
+  }
+
+  .toast.show {
+    @apply opacity-100;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  footer {
+    @apply mt-3.5 p-4.5 text-center text-muted text-[13px];
+  }
+}

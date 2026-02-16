@@ -12,20 +12,6 @@ interface HeaderProps {
   };
 }
 
-/**
- * 
- * @param param0 position: sticky;
-        top: 14px;
-        z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 12px 14px;
-        border-radius: 999px;
- * @returns 
- */
-
 export const Header: React.FC<HeaderProps> = ({
   avatar,
   name,
@@ -34,23 +20,25 @@ export const Header: React.FC<HeaderProps> = ({
   contact,
 }) => {
   return (
-    <header className="m-auto sticky top-4 z-20 flex items-center justify-between bg-white gap-3 py-3 px-3 w-1/2 rounded-2xl">
-      <div className="flex items-center">
-        <img src={avatar} alt={name} className="rounded-full" />
-        
-        <div className="flex flex-col">
-          <p className="">Your name</p>
-          <p className="">Freelance - Dev</p>
+    <header className="w-[75%] card header">
+      <div className="brand">
+        <div className="mark" aria-hidden="true"></div>
+        <div>
+          <strong>Kevin LE FRANC</strong>
+          <span>Freelance · Web Design & Dev</span>
         </div>
       </div>
 
-      <div className="flex items-center">
-        <nav className="flex gap-2">
-          <p>Skills</p>
-          <p>Works</p>
-          <p>Contact</p>
-        </nav>
-      </div>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <div className="cta">
+          <a className="btn primary w-full" href="#contact">
+            Get a quote
+          </a>
+        </div>
+      </nav>
     </header>
   );
 };

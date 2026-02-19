@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 2) Confirmation to user
     await resend.emails.send({
-      from: fromEmail,
+      from: "Kevin Lefranc <contact@mail.kevinlefranc.dev>",
       to: email,
       subject: "We received your request ✅",
       text: `Hi ${name},
